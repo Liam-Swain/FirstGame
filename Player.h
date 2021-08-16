@@ -10,6 +10,8 @@ namespace UserPlayer {
 		Player() { std::cout << "THANK YOU FOR PLAYING THE GAME" << std::endl; };
 		~Player() { std::cout << "Thanks for being a retard" << std::endl; };
 		int PlayerLevel;
+		int PlayerXP;
+		int PlayerTotalXP;
 		int PlayerKillCount;
 		int PlayerHealth;
 		int PlayerMaxHealth;
