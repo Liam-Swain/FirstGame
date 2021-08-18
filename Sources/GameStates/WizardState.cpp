@@ -201,6 +201,6 @@ void WizardState::WizardStateClass::Draw()
 	ClassWindow.draw(ClassGraphics.ManaText);
 	ClassWindow.draw(ClassGraphics.Defensetext);
 	ClassWindow.draw(ClassGraphics.ChangeClassSprite);
-	ClassWindow.draw(ClassGraphics.Outline);
+	//ClassWindow.draw(ClassGraphics.Outline);
 	ClassWindow.display();
 }

@@ -24,7 +24,10 @@ namespace Wizard
 		void setWizardLuck(double Luck);
 		void setWizardStrength(double Strength);
 		void setWizardAccuracy(double Accuracy);
+		void setWizardItemInventorySize(int size);
+		void addItem(Item::ItemsClass);
 
+		int getWizardItemInventorySize();
 		int getWizardLevel();
 		int getWizardKillCount();
 		int getWizardHealth();

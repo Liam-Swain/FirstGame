@@ -57,6 +57,25 @@ void Wizard::WizardClass::setWizardAccuracy(double Accuracy)
 	this->PlayerAccuracy = Accuracy;
 }
 
+
+void Wizard::WizardClass::setWizardItemInventorySize(int size)
+{
+	this->PlayerItems.resize(size);
+}
+
+void Wizard::WizardClass::addItem(Item::ItemsClass item)
+{
+	int size = getWizardItemInventorySize();
+	setWizardItemInventorySize(++size);
+	PlayerItems.push_back(item);
+}
+
+int Wizard::WizardClass::getWizardItemInventorySize()
+{
+	return PlayerItems.size();
+}
+
+
 int Wizard::WizardClass::getWizardLevel()
 {
 	return PlayerLevel;
