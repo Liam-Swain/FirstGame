@@ -10,7 +10,7 @@ namespace Wizard
 	class WizardClass : public UserPlayer::Player
 	{
 	public:
-		WizardClass() { setWizardLevel(1); };
+		WizardClass() { setWizardLevel(1); setWizardHealth(100); setWizardMaxHealth(100); setWizardMana(20); setWizardMaxMana(20); setWizardDefense(5); };
 		void setWizardLevel(int Level);
 		void setWizardKillCount(int KillCount);
 		void setWizardHealth(int Health);

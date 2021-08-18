@@ -23,7 +23,7 @@ void CreateCharacter::CreateCharacterState::InitGraphics()
 		
 	Character.ArcherTexture.setSmooth(true);
 	Character.ArcherText.setTexture(Character.ArcherTexture);
-	Character.ArcherText.setTextureRect(sf::IntRect(0, 0, 600, 80));
+	Character.ArcherText.setTextureRect(sf::IntRect(0, 0, 225, 80));
 	Character.ArcherText.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 0.15, sf::VideoMode::getDesktopMode().height * .55));
 	Character.ArcherText.setScale(0.5f, 0.5f);
 	Character.ArcherText.setColor(sf::Color::Green);
@@ -48,7 +48,7 @@ void CreateCharacter::CreateCharacterState::InitGraphics()
 
 	Character.KnightTextTexture.setSmooth(true);
 	Character.KnightTextSprite.setTexture(Character.KnightTextTexture);
-	Character.KnightTextSprite.setTextureRect(sf::IntRect(0, 0, 600, 80));
+	Character.KnightTextSprite.setTextureRect(sf::IntRect(0, 0, 210, 80));
 	Character.KnightTextSprite.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 0.30, sf::VideoMode::getDesktopMode().height * .55));
 	Character.KnightTextSprite.setScale(0.5f, 0.5f);
 	Character.KnightTextSprite.setColor(sf::Color::White);
@@ -73,7 +73,7 @@ void CreateCharacter::CreateCharacterState::InitGraphics()
 
 	Character.WizardTextTexture.setSmooth(true);
 	Character.WizardTextSprite.setTexture(Character.WizardTextTexture);
-	Character.WizardTextSprite.setTextureRect(sf::IntRect(0, 0, 600, 80));
+	Character.WizardTextSprite.setTextureRect(sf::IntRect(0, 0, 215, 80));
 	Character.WizardTextSprite.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 0.45, sf::VideoMode::getDesktopMode().height * .55));
 	Character.WizardTextSprite.setScale(0.5f, 0.5f);
 	Character.WizardTextSprite.setColor(sf::Color::Red);
@@ -99,7 +99,7 @@ void CreateCharacter::CreateCharacterState::InitGraphics()
 
 	Character.DruidTextTexture.setSmooth(true);
 	Character.DruidTextSprite.setTexture(Character.DruidTextTexture);
-	Character.DruidTextSprite.setTextureRect(sf::IntRect(0, 0, 600, 80));
+	Character.DruidTextSprite.setTextureRect(sf::IntRect(0, 0, 175, 80));
 	Character.DruidTextSprite.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 0.60, sf::VideoMode::getDesktopMode().height * .55));
 	Character.DruidTextSprite.setScale(0.5f, 0.5f);
 	Character.DruidTextSprite.setColor(sf::Color(80, 102, 255, 255));
@@ -133,6 +133,7 @@ void CreateCharacter::CreateCharacterState::Resume()
 int CreateCharacter::CreateCharacterState::HandleEvents()
 {
 	sf::Event event;
+	sf::Vector2f mousePos;
 	while (CharacterWindow.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
@@ -145,7 +146,8 @@ int CreateCharacter::CreateCharacterState::HandleEvents()
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
-				if (event.mouseButton.x > sf::VideoMode::getDesktopMode().width * 0.15 && event.mouseButton.x < sf::VideoMode::getDesktopMode().width * 0.15 + 100 && event.mouseButton.y > sf::VideoMode::getDesktopMode().height * .55 && event.mouseButton.y < sf::VideoMode::getDesktopMode().height * .55 + 50)
+				mousePos = sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
+				if (Character.ArcherText.getGlobalBounds().contains(mousePos))
 				{
 					std::cout << "ARCHER BUTTON PRESSED" << std::endl;
 					CharacterWindow.close();
@@ -153,7 +155,7 @@ int CreateCharacter::CreateCharacterState::HandleEvents()
 					return 2;
 				}
 
-				if (event.mouseButton.x > sf::VideoMode::getDesktopMode().width * 0.30 && event.mouseButton.x < sf::VideoMode::getDesktopMode().width * 0.30 + 100 && event.mouseButton.y > sf::VideoMode::getDesktopMode().height * .55 && event.mouseButton.y < sf::VideoMode::getDesktopMode().height * .55 + 50)
+				if (Character.KnightTextSprite.getGlobalBounds().contains(mousePos))
 				{
 					std::cout << "Knight BUTTON PRESSED" << std::endl;
 					CharacterWindow.close();
@@ -161,7 +163,7 @@ int CreateCharacter::CreateCharacterState::HandleEvents()
 					return 2;
 				}
 
-				if (event.mouseButton.x > sf::VideoMode::getDesktopMode().width * 0.45 && event.mouseButton.x < sf::VideoMode::getDesktopMode().width * 0.45 + 110 && event.mouseButton.y > sf::VideoMode::getDesktopMode().height * .55 && event.mouseButton.y < sf::VideoMode::getDesktopMode().height * .55 + 50)
+				if (Character.WizardTextSprite.getGlobalBounds().contains(mousePos))
 				{
 					std::cout << "Wizard BUTTON PRESSED" << std::endl;
 					CharacterWindow.close();
@@ -169,7 +171,7 @@ int CreateCharacter::CreateCharacterState::HandleEvents()
 					return 2;
 				}
 
-				if (event.mouseButton.x > sf::VideoMode::getDesktopMode().width * 0.60 && event.mouseButton.x < sf::VideoMode::getDesktopMode().width * 0.60 + 100 && event.mouseButton.y > sf::VideoMode::getDesktopMode().height * .55 && event.mouseButton.y < sf::VideoMode::getDesktopMode().height * .55 + 50)
+				if (Character.DruidTextSprite.getGlobalBounds().contains(mousePos))
 				{
 					std::cout << "Druid BUTTON PRESSED" << std::endl;
 					CharacterWindow.close();

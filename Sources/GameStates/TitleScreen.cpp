@@ -39,14 +39,14 @@ void TitleScreen::TitleScreenState::InitGraphics()
 
 	Title.CreateCharacter.setSmooth(true);
 	Title.Character.setTexture(Title.CreateCharacter);
-	Title.Character.setTextureRect(sf::IntRect(0, 0, 600, 80));
+	Title.Character.setTextureRect(sf::IntRect(0, 0, 400, 80));
 	Title.Character.setPosition(sf::Vector2f(30.f, sf::VideoMode::getDesktopMode().height * 0.50));
 	Title.Character.setColor(sf::Color::Green);
 	Title.Character.setScale(sf::Vector2f(1.0f, 1.0f));
 
 	Title.QuitTexture.setSmooth(true);
 	Title.QuitSprite.setTexture(Title.QuitTexture);
-	Title.QuitSprite.setTextureRect(sf::IntRect(0, 0, 600, 80));
+	Title.QuitSprite.setTextureRect(sf::IntRect(0, 0, 115, 80));
 	Title.QuitSprite.setPosition(sf::Vector2f(30.f, sf::VideoMode::getDesktopMode().height * 0.60));
 	Title.QuitSprite.setColor(sf::Color::Green);
 
@@ -76,6 +76,7 @@ void TitleScreen::TitleScreenState::Resume()
 int TitleScreen::TitleScreenState::HandleEvents()
 {
 	sf::Event event;
+	sf::Vector2f mousePos;
 	while (TitleWindow.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
@@ -87,17 +88,23 @@ int TitleScreen::TitleScreenState::HandleEvents()
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
-				if (event.mouseButton.x > 25 && event.mouseButton.x < 30.f + 100 && event.mouseButton.y < sf::VideoMode::getDesktopMode().height * .60 + 80 && event.mouseButton.y > sf::VideoMode::getDesktopMode().height * .60)
+				mousePos = sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
+
+				
+				if (Title.QuitSprite.getGlobalBounds().contains(mousePos))
 				{
-					return 0;
+					
+					TitleWindow.close();
 					CleanUp();
+					return 0;
 				}
 
-				if (event.mouseButton.x > 25 && event.mouseButton.x < 30 + 390 && event.mouseButton.y < sf::VideoMode::getDesktopMode().height * 0.50 + 80 && event.mouseButton.y > sf::VideoMode::getDesktopMode().height * 0.50)
+				if (Title.Character.getGlobalBounds().contains(mousePos))
 				{
 					TitleWindow.close();
 					CleanUp();
 					return 1;
+					
 				}
 
 			}
@@ -117,7 +124,7 @@ void TitleScreen::TitleScreenState::Draw()
 	TitleWindow.draw(Title.Titlesprite);
 	TitleWindow.draw(Title.Character);
 	TitleWindow.draw(Title.QuitSprite);
-	//TitleWindow.draw(Title.MadeBySprite);
+	TitleWindow.draw(Title.MadeBySprite);
 	TitleWindow.display();
 }
 

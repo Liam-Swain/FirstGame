@@ -43,9 +43,17 @@ int main()
 			if (Character.ClassType == 3)
 			{
 				Game.SetGameState(&WizardPlayer, NULL);
-				Game.Init("PLS WORK", &WizardPlayer);
+				Game.Init("Create Wizard Class", &WizardPlayer);
 				std::cout << Wizard.getWizardLevel() << std::endl;
+				
 			}
+		}
+
+		if (QuitGame == 3)
+		{
+			Character.ClassType = -1;
+			Game.SetGameState(&Character, NULL);
+			Game.Init("Character Selection State", &Character);
 		}
 
 	}
