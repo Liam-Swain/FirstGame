@@ -7,7 +7,7 @@ namespace GameState
 	{
 	public:
 		CGameState() {};
-		virtual void InitGraphics() = 0;
+		virtual void InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType) = 0;
 		virtual void CleanUp() = 0;
 		virtual void Pause() = 0;
 		virtual void Resume() = 0;

@@ -10,7 +10,7 @@ namespace Knight
 	class KnightClass : public UserPlayer::Player
 	{
 	public:
-		KnightClass() { setKnightLevel(1); };
+		KnightClass() { setKnightLevel(1); setKnightHealth(100); setKnightMaxHealth(100); setKnightMana(15); setKnightMaxMana(15); setKnightDefense(20); };
 		void setKnightLevel(int Level);
 		void setKnightKillCount(int KillCount);
 		void setKnightHealth(int Health);

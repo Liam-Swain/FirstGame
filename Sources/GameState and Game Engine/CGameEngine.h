@@ -16,9 +16,11 @@ namespace GameEngine
 		void Init(std::string name, GameState::CGameState* State); // Load player in
 		void CleanUp(); // Store player information
 		GameState::CGameState* CurrentState;
-		void SetGameState(GameState::CGameState* State, UserPlayer::Player* Character);
+		UserPlayer::Player* type;
+		sf::Uint8 Colors[3];
+		void SetGameState(GameState::CGameState* State, UserPlayer::Player* Character, sf::Uint8 Colors[3], int ClassType);
 		GameState::CGameState* GetGameState();
-
+		int ClassType;
 		int HandleEvnets();
 		void Update();
 		void Draw();

@@ -1,32 +1,10 @@
-#include "WizardState.h"
-sf::RenderWindow WizardWindow;
-
-void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType)
+#include "DruidState.h"
+sf::RenderWindow DruidWindow;
+void DruidState::DruidStateClass::InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType)
 {
-	WizardWindow.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "WIZARD CLASS STATE");
-	
+	DruidWindow.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "WIZARD CLASS STATE");
 
-	if (!ClassGraphics.WizardClassTexture.loadFromFile("WizardClass.png"))
-	{
-		std::cout << "ERROR LOAD WIZARD" << std::endl;
-	}
 
-	ClassGraphics.WizardClassTexture.setSmooth(true);
-	ClassGraphics.WizardClassSprite.setTexture(ClassGraphics.WizardClassTexture);
-	ClassGraphics.WizardClassSprite.setPosition(sf::Vector2f(30.f, 0.0f));
-	ClassGraphics.WizardClassSprite.setScale(1.0f, 1.0f);
-
-	if (!ClassGraphics.wiz.loadFromFile("WizardPerson.png"))
-	{
-		std::cout << "ERROR LOADING Knight PERSON" << std::endl;
-	}
-	ClassGraphics.wiz.createMaskFromColor(sf::Color::White);
-	ClassGraphics.WizardPersonTexture.loadFromImage(ClassGraphics.wiz);
-	ClassGraphics.WizardPersonTexture.setSmooth(true);
-	ClassGraphics.WizardPersonSprite.setTexture(ClassGraphics.WizardPersonTexture);
-	ClassGraphics.WizardPersonSprite.setTextureRect(sf::IntRect(0.0f, 0.0f, 200, 322));
-	ClassGraphics.WizardPersonSprite.setPosition(sf::VideoMode::getDesktopMode().width * 0.1, sf::VideoMode::getDesktopMode().height * 0.2);
-	ClassGraphics.WizardPersonSprite.setScale(2.0f, 2.0f);
 
 	if (!ClassGraphics.ChooseColor.loadFromFile("Saturation.png"))
 	{
@@ -74,7 +52,7 @@ void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::U
 	ClassGraphics.ChangeClassSprite.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 0.4, sf::VideoMode::getDesktopMode().height * 0.8));
 	ClassGraphics.ChangeClassSprite.setScale(0.5f, 0.5f);
 
-	
+
 	ClassGraphics.Outline.setPosition(sf::Vector2f(ClassGraphics.ChangeClassSprite.getPosition().x, ClassGraphics.ChangeClassSprite.getPosition().y));
 	ClassGraphics.Outline.setSize(sf::Vector2f(ClassGraphics.ChangeClassSprite.getGlobalBounds().width, ClassGraphics.ChangeClassSprite.getGlobalBounds().height));
 	ClassGraphics.Outline.setFillColor(sf::Color::Transparent);
@@ -98,31 +76,31 @@ void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::U
 	ClassGraphics.Outline2.setOutlineThickness(5.f);
 }
 
-void WizardState::WizardStateClass::CleanUp()
+void DruidState::DruidStateClass::CleanUp()
 {
 }
 
-void WizardState::WizardStateClass::Pause()
+void DruidState::DruidStateClass::Pause()
 {
 }
 
-void WizardState::WizardStateClass::Resume()
+void DruidState::DruidStateClass::Resume()
 {
 }
 
-int WizardState::WizardStateClass::HandleEvents()
+int DruidState::DruidStateClass::HandleEvents()
 {
+
 	float CloseToEdge;
 	float CloseToBeg;
 	sf::Event event;
-	sf::Event mouseEvent;
 	sf::Vector2f mousePos;
 	sf::FloatRect rect;
-	while (WizardWindow.pollEvent(event))
+	while (DruidWindow.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
 		{
-			WizardWindow.close();
+			DruidWindow.close();
 			return 0;
 		}
 
@@ -151,7 +129,7 @@ int WizardState::WizardStateClass::HandleEvents()
 					this->RGB[0] = 230;
 				}
 
-				ClassGraphics.WizardPersonSprite.setColor(sf::Color(this->RGB[0], this->RGB[1], this->RGB[2], 255));
+				//ClassGraphics..setColor(sf::Color(this->RGB[0], this->RGB[1], this->RGB[2], 255));
 			}
 
 			if (ClassGraphics.ChangeClassSprite.getGlobalBounds().contains(mousePos))
@@ -194,7 +172,7 @@ int WizardState::WizardStateClass::HandleEvents()
 				if (ClassGraphics.ChangeClassSprite.getGlobalBounds().contains(mousePos))
 				{
 					std::cout << "CHANGE CLASS BUTTON PRESSED" << std::endl;
-					WizardWindow.close();
+					DruidWindow.close();
 					return 3;
 				}
 
@@ -203,37 +181,32 @@ int WizardState::WizardStateClass::HandleEvents()
 					if (this->colorSelected == true)
 					{
 						std::cout << "START GAME BUTTON PRESSED" << std::endl;
-						WizardWindow.close();
+						DruidWindow.close();
 						return 4;
 					}
 				}
 			}
 
 		}
-
 	}
-
 	return -1;
 }
 
-void WizardState::WizardStateClass::Update()
+void DruidState::DruidStateClass::Update()
 {
-	
 }
 
-void WizardState::WizardStateClass::Draw()
+void DruidState::DruidStateClass::Draw()
 {
-	WizardWindow.clear();
-	WizardWindow.draw(ClassGraphics.WizardClassSprite);
-	WizardWindow.draw(ClassGraphics.WizardPersonSprite);
-	WizardWindow.draw(ClassGraphics.ChooseSprite);
-	WizardWindow.draw(ClassGraphics.ColorText);
-	WizardWindow.draw(ClassGraphics.HealthText);
-	WizardWindow.draw(ClassGraphics.ManaText);
-	WizardWindow.draw(ClassGraphics.Defensetext);
-	WizardWindow.draw(ClassGraphics.ChangeClassSprite);
-	WizardWindow.draw(ClassGraphics.Outline);
-	WizardWindow.draw(ClassGraphics.StartGameSprite);
-	WizardWindow.draw(ClassGraphics.Outline2);
-	WizardWindow.display();
+	DruidWindow.clear();
+	DruidWindow.draw(ClassGraphics.ChooseSprite);
+	DruidWindow.draw(ClassGraphics.ColorText);
+	DruidWindow.draw(ClassGraphics.HealthText);
+	DruidWindow.draw(ClassGraphics.ManaText);
+	DruidWindow.draw(ClassGraphics.Defensetext);
+	DruidWindow.draw(ClassGraphics.ChangeClassSprite);
+	DruidWindow.draw(ClassGraphics.Outline);
+	DruidWindow.draw(ClassGraphics.StartGameSprite);
+	DruidWindow.draw(ClassGraphics.Outline2);
+	DruidWindow.display();
 }

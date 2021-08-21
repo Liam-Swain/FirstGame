@@ -5,7 +5,7 @@
 sf::RenderWindow TitleWindow;
 
 
-void TitleScreen::TitleScreenState::InitGraphics()
+void TitleScreen::TitleScreenState::InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType)
 {
 	TitleWindow.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "TITLE SCREEN STATE");
 	if (!Title.texture.loadFromFile("TITLE SCREEN NAME.png"))

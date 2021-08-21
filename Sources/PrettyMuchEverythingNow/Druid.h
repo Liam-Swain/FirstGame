@@ -10,7 +10,7 @@ namespace Druid
 	class DruidClass : public UserPlayer::Player
 	{
 	public:
-		DruidClass() { setDruidLevel(1); };
+		DruidClass() { setDruidLevel(1); setDruidHealth(100); setDruidMaxHealth(100); setDruidMana(50); setDruidMaxMana(50); setDruidDefense(15); };
 		void setDruidLevel(int Level);
 		void setDruidKillCount(int KillCount);
 		void setDruidHealth(int Health);

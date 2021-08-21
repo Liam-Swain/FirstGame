@@ -1,7 +1,7 @@
 #include "CreateCharacter.h"
 #include <Windows.h>
 sf::RenderWindow CharacterWindow;
-void CreateCharacter::CreateCharacterState::InitGraphics()
+void CreateCharacter::CreateCharacterState::InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType)
 {
 	CharacterWindow.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "CREATE CHARACTER STATE");
 	if (!Character.Create.loadFromFile("Create.png"))

@@ -13,7 +13,7 @@ namespace CreateCharacter
 		{
 		};
 		int ClassType;
-		void InitGraphics();
+		void InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType);
 		void CleanUp();
 		void Pause();
 		void Resume();

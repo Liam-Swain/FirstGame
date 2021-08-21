@@ -8,7 +8,7 @@ void GameEngine::CGameEngine::Init(std::string name, GameState::CGameState* Stat
 	std::cout << name << std::endl;
 	GameEngine::CGameEngine::running = true;
 
-	State->InitGraphics();
+	State->InitGraphics(this->type, this->Colors, this->ClassType);
 }
 
 
@@ -20,9 +20,15 @@ GameState::CGameState* GameEngine::CGameEngine::GetGameState()
 {
 	return this->CurrentState;
 }
-void GameEngine::CGameEngine::SetGameState(GameState::CGameState* State, UserPlayer::Player* Character)
+void GameEngine::CGameEngine::SetGameState(GameState::CGameState* State, UserPlayer::Player* Character, sf::Uint8 colors[3], int type)
 {
 	this->CurrentState = State;
+	this->type = Character;
+	this->ClassType = type;
+	for (int i = 0; i < 3; i++)
+	{
+		this->Colors[i] = colors[i];
+	}
 }
 
 int GameEngine::CGameEngine::HandleEvnets()

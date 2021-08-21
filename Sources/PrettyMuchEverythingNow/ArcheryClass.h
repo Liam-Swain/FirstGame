@@ -11,7 +11,7 @@ namespace Archer
 	{
 	public:
 		void LoadArcherInformation();
-		ArcherClass() { setArcherLevel(1); };
+		ArcherClass() { setArcherLevel(1); setArcherHealth(100); setArcherMaxHealth(100); setArcherMana(10); setArcherMaxMana(10); setArcherDefense(10); };
 		void setArcherLevel(int Level);
 		void setArcherKillCount(int KillCount);
 		void setArcherHealth(int Health);

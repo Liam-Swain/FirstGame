@@ -1,32 +1,10 @@
-#include "WizardState.h"
-sf::RenderWindow WizardWindow;
-
-void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType)
+#include "ArcherState.h"
+sf::RenderWindow ArcherWindow;
+void ArcherState::ArcherStateClass::InitGraphics(UserPlayer::Player* type, sf::Uint8 Colors[3], int ClassType)
 {
-	WizardWindow.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "WIZARD CLASS STATE");
-	
+	ArcherWindow.create(sf::VideoMode(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height), "Archer Class State");
 
-	if (!ClassGraphics.WizardClassTexture.loadFromFile("WizardClass.png"))
-	{
-		std::cout << "ERROR LOAD WIZARD" << std::endl;
-	}
 
-	ClassGraphics.WizardClassTexture.setSmooth(true);
-	ClassGraphics.WizardClassSprite.setTexture(ClassGraphics.WizardClassTexture);
-	ClassGraphics.WizardClassSprite.setPosition(sf::Vector2f(30.f, 0.0f));
-	ClassGraphics.WizardClassSprite.setScale(1.0f, 1.0f);
-
-	if (!ClassGraphics.wiz.loadFromFile("WizardPerson.png"))
-	{
-		std::cout << "ERROR LOADING Knight PERSON" << std::endl;
-	}
-	ClassGraphics.wiz.createMaskFromColor(sf::Color::White);
-	ClassGraphics.WizardPersonTexture.loadFromImage(ClassGraphics.wiz);
-	ClassGraphics.WizardPersonTexture.setSmooth(true);
-	ClassGraphics.WizardPersonSprite.setTexture(ClassGraphics.WizardPersonTexture);
-	ClassGraphics.WizardPersonSprite.setTextureRect(sf::IntRect(0.0f, 0.0f, 200, 322));
-	ClassGraphics.WizardPersonSprite.setPosition(sf::VideoMode::getDesktopMode().width * 0.1, sf::VideoMode::getDesktopMode().height * 0.2);
-	ClassGraphics.WizardPersonSprite.setScale(2.0f, 2.0f);
 
 	if (!ClassGraphics.ChooseColor.loadFromFile("Saturation.png"))
 	{
@@ -40,6 +18,18 @@ void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::U
 	ClassGraphics.ChooseSprite.setScale(1.0f, 1.0f);
 	//ClassGraphics.ChooseSprite.setColor(sf::Color::Green);
 
+	if (!ClassGraphics.Arch.loadFromFile("ArcherPerson.png"))
+	{
+		std::cout << "ERROR LOADING WIZARD PERSON" << std::endl;
+	}
+	ClassGraphics.Arch.createMaskFromColor(sf::Color::White);
+	ClassGraphics.ArcherPerson.loadFromImage(ClassGraphics.Arch);
+	ClassGraphics.ArcherPerson.setSmooth(true);
+	ClassGraphics.ArcherPersonSprite.setTexture(ClassGraphics.ArcherPerson);
+	ClassGraphics.ArcherPersonSprite.setTextureRect(sf::IntRect(0.0f, 0.0f, 200, 250));
+	ClassGraphics.ArcherPersonSprite.setPosition(sf::VideoMode::getDesktopMode().width * 0.1, sf::VideoMode::getDesktopMode().height * 0.3);
+	ClassGraphics.ArcherPersonSprite.setScale(2.0f, 2.0f);
+	//ClassGraphics.ArcherPersonSprite.setColor(sf::Color(0, 255, 0, 50));
 
 	if (!ClassGraphics.font.loadFromFile("times.ttf"))
 	{
@@ -74,7 +64,7 @@ void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::U
 	ClassGraphics.ChangeClassSprite.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 0.4, sf::VideoMode::getDesktopMode().height * 0.8));
 	ClassGraphics.ChangeClassSprite.setScale(0.5f, 0.5f);
 
-	
+
 	ClassGraphics.Outline.setPosition(sf::Vector2f(ClassGraphics.ChangeClassSprite.getPosition().x, ClassGraphics.ChangeClassSprite.getPosition().y));
 	ClassGraphics.Outline.setSize(sf::Vector2f(ClassGraphics.ChangeClassSprite.getGlobalBounds().width, ClassGraphics.ChangeClassSprite.getGlobalBounds().height));
 	ClassGraphics.Outline.setFillColor(sf::Color::Transparent);
@@ -98,31 +88,31 @@ void WizardState::WizardStateClass::InitGraphics(UserPlayer::Player* type, sf::U
 	ClassGraphics.Outline2.setOutlineThickness(5.f);
 }
 
-void WizardState::WizardStateClass::CleanUp()
+void ArcherState::ArcherStateClass::CleanUp()
 {
 }
 
-void WizardState::WizardStateClass::Pause()
+void ArcherState::ArcherStateClass::Pause()
 {
 }
 
-void WizardState::WizardStateClass::Resume()
+void ArcherState::ArcherStateClass::Resume()
 {
 }
 
-int WizardState::WizardStateClass::HandleEvents()
+int ArcherState::ArcherStateClass::HandleEvents()
 {
+
 	float CloseToEdge;
 	float CloseToBeg;
 	sf::Event event;
-	sf::Event mouseEvent;
 	sf::Vector2f mousePos;
 	sf::FloatRect rect;
-	while (WizardWindow.pollEvent(event))
+	while (ArcherWindow.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
 		{
-			WizardWindow.close();
+			ArcherWindow.close();
 			return 0;
 		}
 
@@ -151,7 +141,7 @@ int WizardState::WizardStateClass::HandleEvents()
 					this->RGB[0] = 230;
 				}
 
-				ClassGraphics.WizardPersonSprite.setColor(sf::Color(this->RGB[0], this->RGB[1], this->RGB[2], 255));
+				ClassGraphics.ArcherPersonSprite.setColor(sf::Color(this->RGB[0], this->RGB[1], this->RGB[2], 255));
 			}
 
 			if (ClassGraphics.ChangeClassSprite.getGlobalBounds().contains(mousePos))
@@ -194,7 +184,7 @@ int WizardState::WizardStateClass::HandleEvents()
 				if (ClassGraphics.ChangeClassSprite.getGlobalBounds().contains(mousePos))
 				{
 					std::cout << "CHANGE CLASS BUTTON PRESSED" << std::endl;
-					WizardWindow.close();
+					ArcherWindow.close();
 					return 3;
 				}
 
@@ -203,37 +193,33 @@ int WizardState::WizardStateClass::HandleEvents()
 					if (this->colorSelected == true)
 					{
 						std::cout << "START GAME BUTTON PRESSED" << std::endl;
-						WizardWindow.close();
+						ArcherWindow.close();
 						return 4;
 					}
 				}
 			}
 
 		}
-
 	}
-
 	return -1;
 }
 
-void WizardState::WizardStateClass::Update()
+void ArcherState::ArcherStateClass::Update()
 {
-	
 }
 
-void WizardState::WizardStateClass::Draw()
+void ArcherState::ArcherStateClass::Draw()
 {
-	WizardWindow.clear();
-	WizardWindow.draw(ClassGraphics.WizardClassSprite);
-	WizardWindow.draw(ClassGraphics.WizardPersonSprite);
-	WizardWindow.draw(ClassGraphics.ChooseSprite);
-	WizardWindow.draw(ClassGraphics.ColorText);
-	WizardWindow.draw(ClassGraphics.HealthText);
-	WizardWindow.draw(ClassGraphics.ManaText);
-	WizardWindow.draw(ClassGraphics.Defensetext);
-	WizardWindow.draw(ClassGraphics.ChangeClassSprite);
-	WizardWindow.draw(ClassGraphics.Outline);
-	WizardWindow.draw(ClassGraphics.StartGameSprite);
-	WizardWindow.draw(ClassGraphics.Outline2);
-	WizardWindow.display();
+	ArcherWindow.clear();
+	ArcherWindow.draw(ClassGraphics.ChooseSprite);
+	ArcherWindow.draw(ClassGraphics.ColorText);
+	ArcherWindow.draw(ClassGraphics.HealthText);
+	ArcherWindow.draw(ClassGraphics.ManaText);
+	ArcherWindow.draw(ClassGraphics.Defensetext);
+	ArcherWindow.draw(ClassGraphics.ChangeClassSprite);
+	ArcherWindow.draw(ClassGraphics.Outline);
+	ArcherWindow.draw(ClassGraphics.StartGameSprite);
+	ArcherWindow.draw(ClassGraphics.Outline2);
+	ArcherWindow.draw(ClassGraphics.ArcherPersonSprite);
+	ArcherWindow.display();
 }

@@ -14,5 +14,8 @@
 #include "PrettyMuchEverythingNow/Wizard.h"
 #include "PrettyMuchEverythingNow/Druid.h"
 #include "GameStates/WizardState.h"
-
+#include "GameStates/ArcherState.h"
+#include "GameStates/KnightState.h"
+#include "GameStates/DruidState.h"
+#include "GameStates/StartGameState.h"
 #include <vector>

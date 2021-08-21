@@ -1,18 +1,19 @@
 #pragma once
 #pragma once
+#pragma once
 #include "Includes.h"
 #include <iostream>
 
 
-namespace WizardState
+namespace ArcherState
 {
-	class WizardStateClass : public GameState::CGameState
+	class ArcherStateClass : public GameState::CGameState
 	{
 	public:
 		UserPlayer::Player* Class;
 		int ClassType;
-		WizardStateClass(UserPlayer::Player* Class, int ClassType)
-		{ 
+		ArcherStateClass(UserPlayer::Player* Class, int ClassType)
+		{
 			this->Class = Class;
 			this->ClassType = ClassType;
 		};
@@ -25,30 +26,27 @@ namespace WizardState
 		int HandleEvents();
 		void Update();
 		void Draw();
-		//~WizardStateClass() {};
+		//~ArcherStateClass() {};
 		sf::Uint8 Colors[3];
 		sf::Uint8 RGB[3];
 		bool colorSelected = false;
 		typedef struct Graphics
 		{
-			sf::Image wiz;
-			sf::Texture WizardClassTexture;
-			sf::Texture WizardPersonTexture;
 			sf::Texture ChooseColor;
 			sf::Texture ChangeClass;
 			sf::Texture StartGame;
-			sf::Sprite WizardClassSprite;
-			sf::Sprite WizardPersonSprite;
+			sf::Texture ArcherPerson;
 			sf::Sprite ChooseSprite;
 			sf::Sprite ChangeClassSprite;
 			sf::Sprite StartGameSprite;
+			sf::Sprite ArcherPersonSprite;
 			sf::Font font;
 			sf::Text ColorText;
 			sf::Text HealthText;
 			sf::Text ManaText;
 			sf::Text Defensetext;
-			
 
+			sf::Image Arch;
 			sf::RectangleShape Outline;
 			sf::RectangleShape Outline2;
 		}Graphics;
